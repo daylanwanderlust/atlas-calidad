@@ -1,0 +1,6 @@
+BACKEND/node_modules
+FRONTEND/node_modules
+
+.env.sonar
+BACKEND/coverage/
+**/node_modules/

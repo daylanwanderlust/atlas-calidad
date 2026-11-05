@@ -2,6 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet"); // 1. Se agrega Helmet
 const morgan = require("morgan");
 const swaggerUi = require("swagger-ui-express");
 
@@ -20,7 +21,13 @@ const metricasRoutes = require("./routes/metricas");
 
 const app = express();
 
-app.use(cors());
+app.use(helmet());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:3351",
+  })
+);
+
 app.use(express.json());
 app.use(morgan("dev"));
 
